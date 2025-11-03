@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CrudMaui.Views.Persona.EditarPersonaView"
+             xmlns:vm="clr-namespace:CrudMaui.ViewModels">
+    <ContentPage.BindingContext>
+        <vm:clsEditarPersonaVM/>
+    </ContentPage.BindingContext>
+    
+    <VerticalStackLayout BackgroundColor="White">
+        <Label 
+            Text="Welcome to .NET MAUI!"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+
+        <Entry Text="{Binding Persona.Nombre}" TextColor="Black"/>
+        <Entry Text="{Binding Persona.Apellidos}" TextColor="Black"/>
+        <DatePicker MinimumDate="01/01/1920" Date="{Binding Persona.FechaNacimiento, Mode=TwoWay}"/>
+        <Entry Text="{Binding Persona.Direccion}" TextColor="Black"/>
+        <Entry Text="{Binding Persona.Foto}" TextColor="Black"/>
+        <Picker ItemsSource="{Binding ListaDepartamentos}"
+                SelectedItem="{Binding DepartamentoSeleccionado}"
+                ItemDisplayBinding="{Binding Nombre}"/>
+        <Button Text="Guardar"
+                Command="{Binding ActualizarPersona}"/>
+    </VerticalStackLayout>
+</ContentPage>
